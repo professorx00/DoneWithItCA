@@ -1,7 +1,22 @@
 import React from 'react';
-import ListingEditScreen from './app/screens/ListingEditScreen';
-import MessagesScreen from './app/screens/MessagesScreen';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import AuthNavigator from './app/navigation/AuthNavigator';
+import colors from './app/config/colors';
+import AppNavigator from './app/navigation/AppNavigator';
+
+const MyTheme = {
+	...DefaultTheme,
+	colors: {
+		...DefaultTheme.colors,
+		primary: colors.primary,
+		background: 'white',
+	},
+};
 
 export default function App() {
-	return <ListingEditScreen />;
+	return (
+		<NavigationContainer theme={MyTheme}>
+			<AppNavigator />
+		</NavigationContainer>
+	);
 }
