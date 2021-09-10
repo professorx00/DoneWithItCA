@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ListingsScreen from '../screens/ListingsScreen';
 import ListingsDetailsScreen from '../screens/ListingsDetailsScreen';
 import routes from './route';
+import { Modal } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 

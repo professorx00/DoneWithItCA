@@ -3,6 +3,8 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import AuthNavigator from './app/navigation/AuthNavigator';
 import colors from './app/config/colors';
 import AppNavigator from './app/navigation/AppNavigator';
+import OfflineNotice from './app/components/OfflineNotice';
+import Screen from './app/components/Screen';
 
 const MyTheme = {
 	...DefaultTheme,
@@ -15,8 +17,11 @@ const MyTheme = {
 
 export default function App() {
 	return (
-		<NavigationContainer theme={MyTheme}>
-			<AppNavigator />
-		</NavigationContainer>
+		<>
+			<NavigationContainer theme={MyTheme}>
+				<OfflineNotice sytle={{ zIndex: 1 }} />
+				<AppNavigator />
+			</NavigationContainer>
+		</>
 	);
 }

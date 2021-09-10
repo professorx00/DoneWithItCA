@@ -12,10 +12,14 @@ export default useLocation = () => {
 			}
 
 			let results = await Location.getLastKnownPositionAsync({});
-			setLocation({
-				long: results.coords.longitude,
-				lat: results.coords.latitude,
-			});
+			if (results.coords) {
+				setLocation({
+					long: results.coords.longitude,
+					lat: results.coords.latitude,
+				});
+			} else {
+				setLocation({ long: '', lat: '' });
+			}
 		} catch (error) {
 			console.log(error);
 		}

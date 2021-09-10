@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import AppScreen from '../components/AppScreen';
 
 import AppText from '../components/AppText';
@@ -25,14 +25,13 @@ function ListingScreen({ navigation }) {
 
 	return (
 		<AppScreen style={styles.container}>
-			{console.log(error)}
 			{error && (
 				<>
 					<AppText>Couldn't retrieve the listings</AppText>
 					<AppButton title='Retry' onPress={loadListings} />
 				</>
 			)}
-			<ActivityIndicator visible={loading} />
+			{loading && <ActivityIndicator visible={loading} />}
 			<FlatList
 				data={listings}
 				keyExtractor={(listing) => listing.id.toString()}
@@ -45,6 +44,7 @@ function ListingScreen({ navigation }) {
 							onPress={() => {
 								navigation.navigate(routes.LISTING_DETAILS, item);
 							}}
+							thumbnailUrl={item.images[0].thumbnailUrl}
 						/>
 					);
 				}}
